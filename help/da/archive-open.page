@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="archive-open" xml:lang="da">
+
+  <info>
+    <link type="guide" xref="index#managing-archives"/>
+    <revision pkgversion="3.4" date="2011-12-08" status="review"/>
+    <revision pkgversion="3.6" date="2012-08-05" status="review"/>
+    <revision pkgversion="3.8" date="2013-03-25" status="candidate"/>
+    <credit type="author">
+      <name>Marta Bogdanowicz</name>
+      <email>majus85@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email>kittykat3756@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+    <desc>Åbn et eksisterende arkiv.</desc>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Flemming Christensen</mal:name>
+      <mal:email>fc@stromata.dk</mal:email>
+      <mal:years>2011, 2012, 2013</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Åbn et arkiv</title>
+
+  <p>Du kan åbne et eksisterende arkiv med <app>arkivhåndtering</app> ved at:</p>
+
+  <list>
+    <item>
+      <p>klikke på knappen <gui>Åbn</gui> på værktøjslinjen</p>
+    </item>
+    <item>
+      <p>clicking <guiseq><gui style="menu">Archive</gui>
+      <gui style="menuitem">Open…</gui></guiseq></p>
+    </item>
+  </list>
+
+  <p>Du kan også bruge indstillingen <gui>Åbn seneste</gui> ved at:</p>
+
+  <list>
+    <item>
+      <p>klikke på knappen <media type="image" mime="image/png" src="figures/file-roller-open-recent.png"> Åbn et af de senest brugte arkiver</media> på værktøjslinjen og vælge en fil</p>
+    </item>
+    <item>
+      <p>klikke på <guiseq><gui style="menu">Arkiv</gui> <gui style="menuitem">Åbn seneste</gui></guiseq> for at se en liste over nylig brugte arkiver</p>
+    </item>
+  </list>
+
+  <note>
+    <p>Hvis <app>arkivhåndtering</app> ikke kan åbne dit nylig brugte arkiv og viser fejlmeldingen <gui>Filen eksisterer ikke</gui>, er arkivet muligvis blevet flyttet. Du kan prøve at bruge <gui>Åbn</gui> for at lede efter det.</p>
+  </note>
+
+</page>

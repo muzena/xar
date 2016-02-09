@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="archive-create" xml:lang="ca">
+
+  <info>
+    <link type="guide" xref="index#managing-archives"/>
+    <revision pkgversion="3.4" date="2012-01-18" status="review"/>
+    <revision pkgversion="3.6" date="2012-08-05" status="review"/>
+    <revision pkgversion="3.8" date="2013-03-25" status="candidate"/>
+    <credit type="author">
+      <name>Marta Bogdanowicz</name>
+      <email>majus85@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email>kittykat3756@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Compartir Igual 3.0</p>
+    </license>
+    <desc>Afegiu fitxers o carpetes a un arxiu nou.</desc>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Gil Forcada</mal:name>
+      <mal:email>gilforcada@guifi.net</mal:email>
+      <mal:years>2013</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Manel Vidal</mal:name>
+      <mal:email>verduler@gmail.com</mal:email>
+      <mal:years>2013</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Creeu de un arxiu nou</title>
+
+  <p>Creeu un arxiu nou amb el <app>Gestor d'arxius</app> seguint aquests passos:</p>
+
+  <steps>
+    <item>
+      <p>Feu clic al botó de la barra d'eines <gui>Crea un arxiu nou</gui> o feu clic a <guiseq><gui style="menu">Arxiu</gui> <gui style="menuitem">Nou…</gui></guiseq>.</p>
+    </item>
+    <item>
+      <p>S'obrirà el selector de fitxers: poseu un nom al fitxer d'arxiu nou i escolliu la ubicació a on desar-lo. Per continuar, feu clic a <gui>Crea</gui>.</p>
+      <note style="tip">
+	<p>En aquest diàleg també podeu triar el format de fitxer que voleu utilitzar: la llista de les extensions disponibles es troben a la part inferior del diàleg. Si no trieu un format de fitxer, l'arxiu nou estarà en el format <file>tar.gz</file>.</p>
+	<p>Si feu clic a <gui>Altres opcions</gui> podeu establir una contrasenya o partir l'arxiu nou en fitxers individuals més petits. La mida de cada part de l'arxiu nou l'heu d'introduir en <gui>MB</gui>.</p>
+      </note>
+    </item>
+    <item>
+      <p>Per afegir fitxers a l'arxiu podeu fer clic al botó <gui>Afegeix fitxers a l'arxiu</gui> de la barra d'eines o fer clic a <guiseq><gui style="menu">Edita</gui><gui style="menuitem">Afegeix fitxers…</gui></guiseq>. També podeu afegir carpetes senceres: feu clic a <gui>Afegeix una carpeta a l'arxiu</gui> de la barra d'eines o trieu <guiseq><gui style="menu">Edita</gui> <gui style="menuitem">Afegeix una carpeta</gui></guiseq>.</p>
+      <note style="tip">
+        <p>Quan afegiu una carpeta a l'arxiu s'us mostraran algunes opcions:</p>
+        <list>
+          <item><p>Si voleu incloure les subcarpetes.</p></item>
+          <item><p>Escollir els fitxers que voleu incloure.</p></item>
+          <item><p>Seleccionar quines subcarpetes o fitxers voleu excloure.</p></item>
+        </list>
+	<p>No tots els formats d'arxiu admeten carpetes — no s'us notificarà que el format que utilitzeu no les permet. En els formats que no les admeten s'afegiran els fitxers dins de les carpetes, però no les carpetes.</p>
+      </note>
+    </item>
+    <item>
+      <p>Un cop heu acabat d'afegir els fitxers, ja teniu l'arxiu llest, no cal que el deseu.</p>
+    </item>
+  </steps>
+
+</page>

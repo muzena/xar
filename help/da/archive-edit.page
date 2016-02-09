@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="archive-edit" xml:lang="da">
+
+  <info>
+    <link type="guide" xref="index#managing-archives"/>
+    <link type="seealso" xref="archive-create"/>
+    <revision pkgversion="3.4" date="2011-12-08" status="review"/>
+    <revision pkgversion="3.6" date="2012-08-05" status="review"/>
+    <revision pkgversion="3.8" date="2013-03-25" status="candidate"/>
+    <credit type="author">
+      <name>Marta Bogdanowicz</name>
+      <email>majus85@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email>kittykat3756@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+    <desc>Ændre indholdet af dit arkiv.</desc>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Flemming Christensen</mal:name>
+      <mal:email>fc@stromata.dk</mal:email>
+      <mal:years>2011, 2012, 2013</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Redigér et arkiv</title>
+
+  <p>Med <app>arkivhåndtering</app> kan du redigere et eksisterende arkiv ved at tilføje nye filer, fjerne uønskede filer eller ved at omdøbe dem. Du kan arbejde med mapper på samme måde som med filer.</p>
+
+  <terms>
+    <item>
+    <title>Tilføj filer</title>
+    <p>Tilføj filer til et eksisterende arkiv ved at følge vejledningen for <link xref="archive-create">oprettelse af et arkiv</link>.</p>
+    </item>
+    <item>
+    <title>Fjern filer</title>
+      <steps>
+        <item><p>Vælg filen.</p></item>
+        <item><p>Klik på <guiseq><gui style="menu">Redigér</gui> <gui style="menuitem">Slet</gui></guiseq>, eller højreklik på den valgte fil og vælg <gui>Slet</gui>.</p></item>
+      </steps>
+    </item>
+    <item>
+    <title>Omdøb filer</title>
+      <steps>
+        <item><p>Vælg filen.</p></item>
+        <item><p>Click <guiseq><gui style="menu">Edit</gui>
+        <gui style="menuitem">Rename…</gui></guiseq>, or right-click on the
+        selected file, and choose <gui>Rename…</gui>.</p></item>
+        <item><p>Skriv det nye filnavn i den dialog som er åbnet.</p></item>
+        <item><p>Bekræft navnet ved at klikke på <gui>Omdøb</gui>.</p></item>
+      </steps>
+    </item>
+  </terms>
+
+</page>

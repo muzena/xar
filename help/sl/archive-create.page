@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="archive-create" xml:lang="sl">
+
+  <info>
+    <link type="guide" xref="index#managing-archives"/>
+    <revision pkgversion="3.4" date="2012-01-18" status="review"/>
+    <revision pkgversion="3.6" date="2012-08-05" status="review"/>
+    <revision pkgversion="3.8" date="2013-03-25" status="candidate"/>
+    <credit type="author">
+      <name>Marta Bogdanowicz</name>
+      <email>majus85@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email>kittykat3756@gmail.com</email>
+    </credit>
+    <license>
+      <p>Dovoljenje Creative Commons - deljenje pod istimi pogoji 3.0</p>
+    </license>
+    <desc>Dodajte datoteke ali mape v nov arhiv.</desc>
+  </info>
+
+  <title>Ustvarjanje novega arhiva</title>
+
+  <p>Z <app>Upravljalnikom arhivov</app> lahko ustvarite nov arhiv z naslednjimi koraki:</p>
+
+  <steps>
+    <item>
+      <p>Click the <gui>Create a new archive</gui> toolbar button, or click
+      <guiseq><gui style="menu">Archive</gui>
+      <gui style="menuitem">New…</gui></guiseq>.</p>
+    </item>
+    <item>
+      <p>Odprl se bo izbirnik datotek. Uporabite ga za poimenovanje svoje datoteke arhiva in izberite njegovo mesto in kliknite <gui>Ustvari</gui>.</p>
+      <note style="tip">
+	<p>V tem pogovornem oknu lahko izberete vrsto datoteke, ki jo želite uporabiti. Razpoložljive razširitve bi morale biti izpisane spodaj. Če ne izberete vrste datoteke, bo novi arhiv privzeto vrste </p>
+	<p>S klikom <gui>Druge možnosti</gui> lahko določite geslo ali razdelite novi arhiv na manjše, posamezne datoteke, tako da izberete ustrezno možnost in navedete obseg vsakega dela v <gui>MB</gui>.</p>
+      </note>
+    </item>
+    <item>
+      <p>Add the desired files to your archive by clicking the <gui>Add files
+      to the archive</gui> toolbar button, or by clicking
+      <guiseq><gui style="menu">Edit</gui><gui style="menuitem">Add
+      files…</gui></guiseq>. <app>Archive Manager</app> also allows you to add
+      whole folders by clicking the <gui>Add a folder to the archive</gui>
+      toolbar button, or selecting <guiseq><gui style="menu">Edit</gui>
+      <gui style="menuitem">Add a folder</gui></guiseq>.</p>
+      <note style="tip">
+        <p>Ko dodate mapo v arhiv, vam bodo ponujene nekatere možnosti:</p>
+        <list>
+          <item><p>Ali naj bodo podmape vključene ali ne.</p></item>
+          <item><p>Izberite, katere datoteke želite vključiti.</p></item>
+          <item><p>Izberite, katere podmape ali datoteke želite izključiti.</p></item>
+        </list>
+	<p>Vse vrste arhivov ne podpirajo map — če vrsta arhiva, ki ga uporabljate, tega ne podpira, se opozorilo ne bo prikazalo. Če uporabljena vrsta arhiva ne podpira map, bodo datoteke iz map dodane, ne pa tudi same mape.</p>
+      </note>
+    </item>
+    <item>
+      <p>Ko končate z dodajanjem datotek, je vaš arhiv pripravljen. Shraniti ga ni potrebno.</p>
+    </item>
+  </steps>
+
+</page>

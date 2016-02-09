@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="archive-create" xml:lang="pt-BR">
+
+  <info>
+    <link type="guide" xref="index#managing-archives"/>
+    <revision pkgversion="3.4" date="2012-01-18" status="review"/>
+    <revision pkgversion="3.6" date="2012-08-05" status="review"/>
+    <revision pkgversion="3.8" date="2013-03-25" status="candidate"/>
+    <credit type="author">
+      <name>Marta Bogdanowicz</name>
+      <email>majus85@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email>kittykat3756@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Compartilhada Igual 3.0</p>
+    </license>
+    <desc>Adicione arquivos ou pastas a um novo pacote.</desc>
+  </info>
+
+  <title>Criar um novo pacote</title>
+
+  <p>Crie um novo pacote com o <app>Gerenciador de pacotes</app> seguindo os passos abaixo:</p>
+
+  <steps>
+    <item>
+      <p>Clique no botão <gui>Cria um novo pacote</gui> na barra de ferramentas ou clique em <guiseq><gui style="menu">Pacote</gui> <gui style="menuitem">Novo…</gui></guiseq>.</p>
+    </item>
+    <item>
+      <p>O seletor de arquivos vai abrir: nomeie o seu novo arquivo de pacote e escolha a localização onde ele será salvo. Então, clique em <gui>Criar</gui> para continuar.</p>
+      <note style="tip">
+	<p>Neste diálogo, você também pode escolher o formato do arquivo que você deseja usar: extensões disponíveis estão listadas na parte inferior. Se você não escolher um formato de arquivo, o novo pacote será um <file>tar.gz</file>.</p>
+	<p>Ao clicar <gui>Outras opções</gui> você pode definir uma senha ou dividir seu novo pacote em diversos arquivos menores, selecionando a opção relevante e especificando o volume para cada parte em <gui>MB</gui>.</p>
+      </note>
+    </item>
+    <item>
+      <p>Adicione os arquivos desejados ao seu pacote clicando o botão <gui>Adiciona arquivos ao pacote</gui> da barra de ferramentas, ou clicando <guiseq><gui style="menu">Editar</gui> <gui style="menuitem">Adicionar arquivos…</gui></guiseq>. O <app>Gerenciador de pacotes</app> também permite que você adicione pastas completas, clicando no botão <gui>Adiciona uma pasta ao pacote</gui> na barra de ferramentas ou selecionando <guiseq><gui style="menu">Editar</gui> <gui style="menuitem">Adicionar uma pasta</gui></guiseq>.</p>
+      <note style="tip">
+        <p>Quando você adicionar uma pasta ao seu pacote, algumas opções serão apresentadas a você:</p>
+        <list>
+          <item><p>Se subpastas devem ser incluídas ou não.</p></item>
+          <item><p>Escolha de quais arquivos deveriam ser incluídos.</p></item>
+          <item><p>Seleção de quais subpastas ou arquivos devem ser excluídos.</p></item>
+        </list>
+	<p>Nem todos formatos de arquivos de pacotes têm suporte a pastas — se o formato de arquivo que você estiver usando não tiver suporte, você não será avisado. Se o formato de arquivo que você estiver usando não tiver suporte a pastas, os arquivos dos diretórios serão adicionados, mas não a pasta em si.</p>
+      </note>
+    </item>
+    <item>
+      <p>Uma vez finalizada a adição de arquivos, o arquivo está pronto — você não precisa salvá-lo.</p>
+    </item>
+  </steps>
+
+</page>

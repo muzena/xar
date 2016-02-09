@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="archive-open" xml:lang="pt-BR">
+
+  <info>
+    <link type="guide" xref="index#managing-archives"/>
+    <revision pkgversion="3.4" date="2011-12-08" status="review"/>
+    <revision pkgversion="3.6" date="2012-08-05" status="review"/>
+    <revision pkgversion="3.8" date="2013-03-25" status="candidate"/>
+    <credit type="author">
+      <name>Marta Bogdanowicz</name>
+      <email>majus85@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email>kittykat3756@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Compartilhada Igual 3.0</p>
+    </license>
+    <desc>Abra um pacote existente.</desc>
+  </info>
+
+  <title>Abrir um pacote</title>
+
+  <p>Você pode abrir um pacote existente com o <app>Gerenciador de pacotes</app>:</p>
+
+  <list>
+    <item>
+      <p>clicando o botão <gui>Abrir</gui> na barra de ferramentas</p>
+    </item>
+    <item>
+      <p>clicando <guiseq><gui style="menu">Pacote</gui> <gui style="menuitem">Abrir…</gui></guiseq></p>
+    </item>
+  </list>
+
+  <p>Você também pode usar a opção <gui>Abrir recentes</gui>:</p>
+
+  <list>
+    <item>
+      <p>Clicando no botão <media type="image" mime="image/png" src="figures/file-roller-open-recent.png">Abrir um pacote recentemente utilizado</media> na barra de ferramentas e selecionando um arquivo</p>
+    </item>
+    <item>
+      <p>clicando <guiseq><gui style="menu">Pacote</gui> <gui style="menuitem">Abrir recentes</gui></guiseq> para ver a lista dos pacotes usados recentemente</p>
+    </item>
+  </list>
+
+  <note>
+    <p>Se o <app>Gerenciador de pacotes</app> não puder abrir sei arquivo usado recentemente e exibir a mensagem de erro <gui>O arquivo não existe</gui>, pode ser que a localização do arquivo de pacote tenha mudado. Você pode tentar usar a opção de <gui>Abrir</gui> para procurar por ele.</p>
+  </note>
+
+</page>

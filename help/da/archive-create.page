@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="archive-create" xml:lang="da">
+
+  <info>
+    <link type="guide" xref="index#managing-archives"/>
+    <revision pkgversion="3.4" date="2012-01-18" status="review"/>
+    <revision pkgversion="3.6" date="2012-08-05" status="review"/>
+    <revision pkgversion="3.8" date="2013-03-25" status="candidate"/>
+    <credit type="author">
+      <name>Marta Bogdanowicz</name>
+      <email>majus85@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email>kittykat3756@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+    <desc>Tilføje filer eller mapper til et nyt arkiv.</desc>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Flemming Christensen</mal:name>
+      <mal:email>fc@stromata.dk</mal:email>
+      <mal:years>2011, 2012, 2013</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Oprette et nyt arkiv</title>
+
+  <p>Opret et nyt arkiv med <app>Arkivhåndtering</app> ved at følge disse skridt:</p>
+
+  <steps>
+    <item>
+      <p>Click the <gui>Create a new archive</gui> toolbar button, or click
+      <guiseq><gui style="menu">Archive</gui>
+      <gui style="menuitem">New…</gui></guiseq>.</p>
+    </item>
+    <item>
+      <p>Filvælgeren åbnes: giv din nye arkivfil et navn og vælg hvor den skal gemmes, og klik så på <gui>Opret</gui> for at fortsætte.</p>
+      <note style="tip">
+	<p>I denne dialog kan du også vælge det filformat, som du vil bruge: tilgængelige filendelser vises nederst. Hvis ikke du vælger et filformat, så bliver det nye arkiv <file>tar.gz</file>.</p>
+	<p>Ved at klikke på <gui>Andre indstillinger</gui> kan du angive en adgangskode eller dele dit ny arkiv i mindre, individuelle filer ved at vælge den relevante indstilling og angive størrelsen på hver del i <gui>MB</gui>.</p>
+      </note>
+    </item>
+    <item>
+      <p>Add the desired files to your archive by clicking the <gui>Add files
+      to the archive</gui> toolbar button, or by clicking
+      <guiseq><gui style="menu">Edit</gui><gui style="menuitem">Add
+      files…</gui></guiseq>. <app>Archive Manager</app> also allows you to add
+      whole folders by clicking the <gui>Add a folder to the archive</gui>
+      toolbar button, or selecting <guiseq><gui style="menu">Edit</gui>
+      <gui style="menuitem">Add a folder</gui></guiseq>.</p>
+      <note style="tip">
+        <p>Når du føjer en mappe til dit arkiv, får du en række muligheder:</p>
+        <list>
+          <item><p>Om undermapper skal medtages eller ej.</p></item>
+          <item><p>Vælg hvilke filer der skal medtages.</p></item>
+          <item><p>Vælg hvilke undermapper eller filer, som skal udelukkes.</p></item>
+        </list>
+	<p>Ikke alle arkivfilformater understøtter mapper - hvis det filformat, som du bruger, ikke gør det, får du ingen advarsel. Hvis det filformat, som du bruger, ikke understøtter mapper, så bliver filerne i mappen tilføjet, medens selve mappen ikke gør det.</p>
+      </note>
+    </item>
+    <item>
+      <p>Når du er færdig med at tilføje filer, så er arkivet klar; du behøver ikke at gemme det.</p>
+    </item>
+  </steps>
+
+</page>

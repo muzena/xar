@@ -1,0 +1,7 @@
+01_package_names.patch
+99_ltmain_as-needed.patch
+
+revert_remove_menubar.patch
+git_handle_command_line.patch
+git_user_extract_iso.patch
+git_nautilus_extension_unref.patch

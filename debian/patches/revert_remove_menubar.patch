@@ -1,0 +1,334 @@
+Index: file-roller-3.10.2.1/data/org.gnome.FileRoller.gschema.xml.in
+===================================================================
+--- file-roller-3.10.2.1.orig/data/org.gnome.FileRoller.gschema.xml.in	2014-02-20 21:13:59.481348994 +0100
++++ file-roller-3.10.2.1/data/org.gnome.FileRoller.gschema.xml.in	2014-02-20 21:13:59.469348993 +0100
+@@ -110,6 +110,11 @@
+     <key name="sidebar-width" type="i">
+       <default>200</default>
+     </key>
++    <key name="view-toolbar" type="b">
++      <default>true</default>
++      <_summary>View toolbar</_summary>
++      <_description>Whether to display the toolbar.</_description>
++    </key>
+     <key name="view-statusbar" type="b">
+       <default>true</default>
+       <_summary>View statusbar</_summary>
+Index: file-roller-3.10.2.1/src/actions.c
+===================================================================
+--- file-roller-3.10.2.1.orig/src/actions.c	2014-02-20 21:13:59.481348994 +0100
++++ file-roller-3.10.2.1/src/actions.c	2014-02-20 21:13:59.469348993 +0100
+@@ -386,6 +386,18 @@
+ 
+ 
+ void
++activate_action_view_toolbar (GtkAction *action,
++			      gpointer   data)
++{
++	GSettings *settings;
++
++	settings = g_settings_new (FILE_ROLLER_SCHEMA_UI);
++	g_settings_set_boolean (settings, PREF_UI_VIEW_TOOLBAR, gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)));
++	g_object_unref (settings);
++}
++
++
++void
+ activate_action_view_statusbar (GtkAction *action,
+ 				gpointer   data)
+ {
+Index: file-roller-3.10.2.1/src/actions.h
+===================================================================
+--- file-roller-3.10.2.1.orig/src/actions.h	2014-02-20 21:13:59.481348994 +0100
++++ file-roller-3.10.2.1/src/actions.h	2014-02-20 21:13:59.473348994 +0100
+@@ -57,6 +57,7 @@
+ void activate_action_open_folder_from_sidebar (GtkAction *action, gpointer data);
+ void activate_action_password (GtkAction *action, gpointer data);
+ 
++void activate_action_view_toolbar (GtkAction *action, gpointer data);
+ void activate_action_view_statusbar (GtkAction *action, gpointer data);
+ void activate_action_view_folders (GtkAction *action, gpointer data);
+ void activate_action_stop (GtkAction *action, gpointer data);
+Index: file-roller-3.10.2.1/src/fr-window.c
+===================================================================
+--- file-roller-3.10.2.1.orig/src/fr-window.c	2014-02-20 21:13:59.481348994 +0100
++++ file-roller-3.10.2.1/src/fr-window.c	2014-02-20 21:15:52.729352765 +0100
+@@ -5055,6 +5055,7 @@
+ {
+ 	fr_window_update_current_location (window);
+ 
++	set_active (window, "ViewToolbar", g_settings_get_boolean (window->priv->settings_ui, PREF_UI_VIEW_TOOLBAR));
+ 	set_active (window, "ViewStatusbar", g_settings_get_boolean (window->priv->settings_ui, PREF_UI_VIEW_STATUSBAR));
+ 
+ 	window->priv->view_folders = g_settings_get_boolean (window->priv->settings_ui, PREF_UI_VIEW_FOLDERS);
+@@ -5089,6 +5090,17 @@
+ 
+ 
+ static void
++pref_view_toolbar_changed (GSettings  *settings,
++		  	   const char *key,
++		  	   gpointer    user_data)
++{
++	FrWindow *window = user_data;
++
++	fr_window_set_toolbar_visibility (window, g_settings_get_boolean (settings, key));
++}
++
++
++static void
+ pref_view_statusbar_changed (GSettings  *settings,
+ 		  	     const char *key,
+ 		  	     gpointer    user_data)
+@@ -5385,6 +5397,7 @@
+ static void
+ fr_window_construct (FrWindow *window)
+ {
++	GtkWidget          *menubar;
+ 	GtkWidget          *toolbar;
+ 	GtkWidget          *list_scrolled_window;
+ 	GtkWidget          *location_box;
+@@ -5783,6 +5796,10 @@
+ 	g_object_set (other_actions_action, "menu", gtk_ui_manager_get_widget (ui, "/OtherActionsMenu"), NULL);
+ 	g_object_unref (other_actions_action);
+ 
++	menubar = gtk_ui_manager_get_widget (ui, "/MenuBar");
++	fr_window_attach (FR_WINDOW (window), menubar, FR_WINDOW_AREA_MENUBAR);
++	gtk_widget_show (menubar);
++
+ 	window->priv->toolbar = toolbar = gtk_ui_manager_get_widget (ui, "/ToolBar");
+ 	gtk_toolbar_set_show_arrow (GTK_TOOLBAR (toolbar), TRUE);
+ 	gtk_style_context_add_class (gtk_widget_get_style_context (toolbar), GTK_STYLE_CLASS_PRIMARY_TOOLBAR);
+@@ -5841,7 +5858,10 @@
+ 	/**/
+ 
+ 	fr_window_attach (FR_WINDOW (window), window->priv->toolbar, FR_WINDOW_AREA_TOOLBAR);
+-	gtk_widget_show (toolbar);
++	if (g_settings_get_boolean (window->priv->settings_ui, PREF_UI_VIEW_TOOLBAR))
++		gtk_widget_show (toolbar);
++	else
++		gtk_widget_hide (toolbar);
+ 
+ 	window->priv->file_popup_menu = gtk_ui_manager_get_widget (ui, "/FilePopupMenu");
+ 	window->priv->folder_popup_menu = gtk_ui_manager_get_widget (ui, "/FolderPopupMenu");
+@@ -5899,6 +5919,10 @@
+ 			  G_CALLBACK (pref_history_len_changed),
+ 			  window);
+ 	g_signal_connect (window->priv->settings_ui,
++			  "changed::" PREF_UI_VIEW_TOOLBAR,
++			  G_CALLBACK (pref_view_toolbar_changed),
++			  window);
++	g_signal_connect (window->priv->settings_ui,
+ 			  "changed::" PREF_UI_VIEW_STATUSBAR,
+ 			  G_CALLBACK (pref_view_statusbar_changed),
+ 			  window);
+@@ -9255,6 +9279,21 @@
+ }
+ 
+ 
++void
++fr_window_set_toolbar_visibility (FrWindow *window,
++				  gboolean  visible)
++{
++	g_return_if_fail (window != NULL);
++
++	if (visible)
++		gtk_widget_show (window->priv->toolbar);
++	else
++		gtk_widget_hide (window->priv->toolbar);
++
++	set_active (window, "ViewToolbar", visible);
++}
++
++
+ void
+ fr_window_set_statusbar_visibility  (FrWindow *window,
+ 				     gboolean  visible)
+Index: file-roller-3.10.2.1/src/fr-window.h
+===================================================================
+--- file-roller-3.10.2.1.orig/src/fr-window.h	2014-02-20 21:13:59.481348994 +0100
++++ file-roller-3.10.2.1/src/fr-window.h	2014-02-20 21:13:59.477348994 +0100
+@@ -268,6 +268,8 @@
+ 							GFile      *default_dir,
+ 						        gboolean    freeze);
+ GFile *         fr_window_get_extract_default_dir      (FrWindow   *window);
++void            fr_window_set_toolbar_visibility       (FrWindow   *window,
++						        gboolean    value);
+ void            fr_window_set_statusbar_visibility     (FrWindow   *window,
+ 						        gboolean    value);
+ void            fr_window_set_folders_visibility       (FrWindow   *window,
+Index: file-roller-3.10.2.1/src/preferences.h
+===================================================================
+--- file-roller-3.10.2.1.orig/src/preferences.h	2014-02-20 21:13:59.481348994 +0100
++++ file-roller-3.10.2.1/src/preferences.h	2014-02-20 21:13:59.477348994 +0100
+@@ -49,6 +49,7 @@
+ #define PREF_UI_WINDOW_HEIGHT             "window-height"
+ #define PREF_UI_SIDEBAR_WIDTH             "sidebar-width"
+ #define PREF_UI_HISTORY_LEN               "history-len"
++#define PREF_UI_VIEW_TOOLBAR              "view-toolbar"
+ #define PREF_UI_VIEW_STATUSBAR            "view-statusbar"
+ #define PREF_UI_VIEW_FOLDERS              "view-folders"
+ 
+Index: file-roller-3.10.2.1/src/ui/menus-toolbars.ui
+===================================================================
+--- file-roller-3.10.2.1.orig/src/ui/menus-toolbars.ui	2014-02-20 21:13:59.481348994 +0100
++++ file-roller-3.10.2.1/src/ui/menus-toolbars.ui	2014-02-20 21:13:59.477348994 +0100
+@@ -1,42 +1,48 @@
+ <ui>
+-
+-  <!-- Accelerators: File -->
+-
+-  <accelerator action="New" />
+-  <accelerator action="Open" />
+-  <accelerator action="SaveAs" />
+-  <accelerator action="Extract" />
+-  <accelerator action="TestArchive" />
+-  <accelerator action="Properties" />
+-  <accelerator action="Close" />
+-
+-  <!-- Accelerators: Edit -->
+-
+-  <accelerator action="Cut" />
+-  <accelerator action="Copy" />
+-  <accelerator action="Paste" />
+-  <accelerator action="Rename" />
+-  <accelerator action="Delete" />
+-  <accelerator action="SelectAll" />
+-  <accelerator action="DeselectAll" />
+-  <accelerator action="Add" />
+-  <accelerator action="Find" />
+-  <accelerator action="Password" />
+-
+-  <!-- Accelerators: View -->
+-
+-  <accelerator action="ViewFolders" />
+-  <accelerator action="ViewAllFiles" />
+-  <accelerator action="ViewAsFolder" />
+-  <accelerator action="Reload" />
+-
+-  <!-- Accelerators: Help -->
+-
+-  <accelerator action="Contents" />
+-  <accelerator action="About" />
+-
+-  <!-- Toolbars -->
+-
++  <menubar name="MenuBar">
++    <menu name="Archive" action="FileMenu">
++      <menuitem action="New"/>
++      <menuitem action="Open"/>
++      <menuitem action="OpenRecent"/>
++      <menuitem action="SaveAs"/>
++      <separator/>
++      <menuitem action="Extract"/>
++      <menuitem action="TestArchive"/>
++      <separator/>
++      <menuitem action="Properties"/>
++      <separator/>
++      <menuitem action="Close"/>
++    </menu>
++    <menu action="EditMenu">
++      <menuitem action="Cut"/>
++      <menuitem action="Copy"/>
++      <menuitem action="Paste"/>
++      <menuitem action="Rename"/>
++      <menuitem action="Delete"/>
++      <separator/>
++      <menuitem action="SelectAll"/>
++      <menuitem action="DeselectAll"/>
++      <separator/>
++      <menuitem action="Add"/>
++      <menuitem action="Find"/>
++      <separator/>
++      <menuitem action="Password"/>
++    </menu>
++    <menu action="ViewMenu">
++      <menuitem action="ViewToolbar"/>
++      <menuitem action="ViewStatusbar"/>
++      <menuitem action="ViewFolders"/>
++      <separator/>
++      <menuitem action="ViewAllFiles"/>
++      <menuitem action="ViewAsFolder"/>
++      <separator/>
++      <menuitem action="Reload"/>
++    </menu>
++    <menu action="HelpMenu">
++      <menuitem action="Contents"/>
++      <menuitem action="About"/>
++    </menu>
++  </menubar>
+   <toolbar name="ToolBar">
+     <toolitem action="New"/>
+     <toolitem action="OpenRecent_Toolbar"/>
+@@ -48,16 +54,12 @@
+     <separator expand="true"/>
+     <toolitem action="OtherActions"/>
+   </toolbar>
+-
+   <toolbar name="LocationBar">
+     <toolitem action="GoBack"/>
+     <toolitem action="GoForward"/>
+     <toolitem action="GoUp"/>
+     <toolitem action="GoHome"/>
+   </toolbar>
+-
+-  <!-- Popup menus -->
+-
+   <popup name="FilePopupMenu">
+     <menuitem action="ViewSelection"/>
+     <menuitem action="OpenSelection"/>
+@@ -70,7 +72,6 @@
+     <menuitem action="Rename"/>
+     <menuitem action="Delete"/>
+   </popup>
+-
+   <popup name="FolderPopupMenu">
+     <menuitem action="OpenFolder"/>
+     <separator/>
+@@ -82,11 +83,9 @@
+     <menuitem action="Rename"/>
+     <menuitem action="Delete"/>
+   </popup>
+-
+   <popup name="AddMenu">
+     <menuitem action="Add"/>
+   </popup>
+-
+   <popup name="SidebarFolderPopupMenu">
+     <menuitem action="OpenFolderFromSidebar"/>
+     <separator/>
+@@ -98,7 +97,6 @@
+     <menuitem action="RenameFolderFromSidebar"/>
+     <menuitem action="DeleteFolderFromSidebar"/>
+   </popup>
+-
+   <popup action="OtherActionsMenu">
+     <menuitem action="SaveAs"/>
+     <menuitem action="Password"/>
+Index: file-roller-3.10.2.1/src/ui.h
+===================================================================
+--- file-roller-3.10.2.1.orig/src/ui.h	2014-02-20 21:13:59.481348994 +0100
++++ file-roller-3.10.2.1/src/ui.h	2014-02-20 21:13:59.477348994 +0100
+@@ -28,6 +28,11 @@
+ 
+ 
+ static GtkActionEntry action_entries[] = {
++	{ "FileMenu", NULL, N_("_Archive") },
++	{ "EditMenu", NULL, N_("_Edit") },
++	{ "ViewMenu", NULL, N_("_View") },
++	{ "HelpMenu", NULL, N_("_Help") },
++	{ "ArrangeFilesMenu", NULL, N_("_Arrange Files") },
+ 	{ "OtherActionsMenu", NULL, NULL },
+ 
+ 	{ "About", GTK_STOCK_ABOUT,
+@@ -188,6 +193,11 @@
+ 
+ 
+ static GtkToggleActionEntry action_toggle_entries[] = {
++	{ "ViewToolbar", NULL,
++	  N_("_Toolbar"), NULL,
++	  N_("View the main toolbar"),
++	  G_CALLBACK (activate_action_view_toolbar),
++	  TRUE },
+ 	{ "ViewStatusbar", NULL,
+ 	  N_("Stat_usbar"), NULL,
+ 	  N_("View the statusbar"),

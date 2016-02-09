@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="archive-extract-advanced-options" xml:lang="da">
+
+  <info>
+    <link type="guide" xref="index#advanced-options"/>
+    <revision pkgversion="3.4" date="2012-03-06" status="review"/>
+    <revision pkgversion="3.6" date="2012-08-05" status="review"/>
+    <revision pkgversion="3.8" date="2013-03-25" status="candidate"/>
+    <credit type="author">
+      <name>Marta Bogdanowicz</name>
+      <email>majus85@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email>kittykat3756@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+    <desc>Angiv dine indstillinger for udpakning af arkiver.</desc>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Flemming Christensen</mal:name>
+      <mal:email>fc@stromata.dk</mal:email>
+      <mal:years>2011, 2012, 2013</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Avancerede indstillinger for arkivudpakning</title>
+
+  <p><app>Arkivhåndtering</app> giver en række muligheder for udpakning af et arkiv. Du kan se disse muligheder i den filvælgerdialog, der bruges til at vælge, hvor filerne skal udpakkes. Nederst i denne dialog kan du vælge om du vil udpakke:</p>
+
+  <terms>
+    <item>
+      <title><gui>Alle filer</gui></title>
+      <p>Alle filer og mapper i arkivet vil blive udpakket.</p>
+    </item>
+    <item>
+      <title><gui>Valgte filer</gui></title>
+      <p><application>Arkivhåndtering</application> udpakker kun de valgte filer.</p>
+      <note>
+        <p>You need to select the files that you wish to extract before
+        you click <guiseq><gui style="menu">Archive</gui>
+        <gui style="menuitem">Extract…</gui></guiseq>. Do this by clicking on
+        the file name. Use <key>Ctrl</key> and <key>Shift</key> keys, to select
+        more than one file.</p>
+      </note>
+    </item>
+    <item>
+      <title><gui>Filer</gui></title>
+      <p>Du kan indtaste navnene på de filer, som du vil udpakke. Adskil de enkelte filer ved hjælp af et semikolon (<key>;</key>)</p>
+      <note>
+        <p>Filnavnet skal efterfølges af en filendelse. Du kan bruge stjernen (<key>*</key>) som jokertegn. For eksempelvis at vælge alle <file>.txt</file>-filer skal du skrive <file>*.txt</file>.</p>
+      </note>
+    </item>
+  </terms>
+
+  <p>I filvælgerdialogen kan du angive om du vil:</p>
+  <terms>
+    <item>
+      <title><gui>Bevare mappestrukturen</gui></title>
+      <p>Sæt mærke ved denne indstilling, hvis du vil bevare mappestrukturen som den er i dit arkiv.</p>
+    </item>
+    <item>
+      <title><gui>Overskriv ikke nyere filer</gui></title>
+      <p>Med denne indstilling overskriver man ikke eksisterende filer med samme navn, hvis de har en nyere ændringsdato end de, der er i arkivet.</p>
+    </item>
+  </terms>
+
+  <p>Disse <gui>Handlinger</gui> vises i bunden af dialogen.</p>
+
+</page>

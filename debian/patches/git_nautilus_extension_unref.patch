@@ -1,0 +1,27 @@
+From 368c3602743cacca54a43f0a2a07b25a734ee0a3 Mon Sep 17 00:00:00 2001
+From: Robert Ancell <robert.ancell@canonical.com>
+Date: Fri, 11 Jul 2014 19:29:19 +1200
+Subject: [PATCH] Add missing unref when accessing NautilusFileInfo object.
+
+This caused Nautilus to crash when unmounting a network connection while transferring and then reconnecting to that service.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=732471
+---
+ nautilus/nautilus-fileroller.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/nautilus/nautilus-fileroller.c b/nautilus/nautilus-fileroller.c
+index 2017600..10ead77 100644
+--- a/nautilus/nautilus-fileroller.c
++++ b/nautilus/nautilus-fileroller.c
+@@ -310,6 +310,7 @@ nautilus_fr_get_file_items (NautilusMenuProvider *provider,
+ 
+ 			parent = nautilus_file_info_get_parent_info (file);
+  			can_write = nautilus_file_info_can_write (parent);
++			g_object_unref (parent);
+ 		}
+ 	}
+ 
+-- 
+2.0.1
+
